@@ -66,10 +66,10 @@ where
 
         -- Bisection
     absFloat :: Float -> Float
-    absFloat x = if (x < 0.0) then (-1.0*x) else x
+    absFloat x = if (x P.< 0.0) then (-1.0*x) else x
                 
     close :: Float -> Bool
-    close x = (absFloat x) < 0.0001 
+    close x = (absFloat x) P.< 0.0001 
                 
     -- Function definition: expect a function f x that goes from fl -> float, 
     -- will output another float
@@ -79,6 +79,6 @@ where
      let f_mid = f mid in
       if close f_mid then mid
       	else
-      		if f_mid < 0.0 then bisection f mid xr
+      		if f_mid P.< 0.0 then bisection f mid xr
       			else bisection f xl mid
         
